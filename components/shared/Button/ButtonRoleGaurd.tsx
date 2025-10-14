@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuthGuard"; // fixed import
+import mockLogin from "@/app/mock/login";
 
 interface RoleButtonProps {
   role: string;

@@ -2,7 +2,7 @@
 "use client";
 import { ReactNode } from "react";
 import { usePathname } from "next/navigation";
-import { getSession } from "@/lib/auth";
+import { getSession } from "@/lib/authMock";
 import { canAccess, rolePermissions, Role } from "@/constants/roles";
 import { redirect } from "next/navigation";
 

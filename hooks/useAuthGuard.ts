@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getSession } from "@/lib/auth";
+import { getSession } from "@/lib/authMock";
 
 export function useAuth() {
   const [userRole, setUserRole] = useState<string | null>(null);

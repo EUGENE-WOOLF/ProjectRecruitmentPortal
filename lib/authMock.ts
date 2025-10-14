@@ -16,7 +16,6 @@ export function loginAs(role: Role) {
   mockUser = { email: `${role}@example.com`, role };
 }
 
-// mock logout
 export function logout() {
   mockUser = null;
 }

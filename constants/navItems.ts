@@ -11,9 +11,3 @@ export const studnetNavItems: {
   { href: "/professor/courses", label: "Courses", icon: BookOpen },
   { href: "/professor/reviews", label: "Reviews", icon: Users },
 ];
-
-// export const professorNavItems: {
-//   href: string;
-//   label: string;
-//   icon: React.ElementType;
-// }[];
