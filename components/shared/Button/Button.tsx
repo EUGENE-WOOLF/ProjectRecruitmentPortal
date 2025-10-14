@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { LucideIcon } from "lucide-react";
 import { getSession } from "@/lib/auth";
 import { useEffect, useState } from "react";
+import { get } from "http";
 
 interface RoleButtonProps {
   role: string;
@@ -16,12 +17,14 @@ export default function RoleButton({ role, Icon }: RoleButtonProps) {
   const [userRole, setUserRole] = useState<string | null>(null);
 
   useEffect(() => {
-    // In a real app, this could be an API call or cookie check
-    const session = getSession();
-    if (session) {
-      setIsLoggedIn(true);
-      setUserRole(session.role);
+    async function checkSession() {
+      const session = await getSession();
+      if (session) {
+        setIsLoggedIn(true);
+        setUserRole(session.role);
+      }
     }
+    checkSession();
   }, []);
 
   const handleClick = (e: React.MouseEvent) => {

@@ -1,11 +1,12 @@
 // src/constants/roles.ts
-export type Role = "student" | "mentor" | "professor";
+export type Role = "student" | "mentor" | "professor" | "admin";
 
 // Base route per role (used for redirects)
 export const rolePermissions: Record<Role, string> = {
   student: "/student",
   mentor: "/mentor",
   professor: "/professor",
+  admin: "/admin",
 };
 
 // Check if a role can access a path
