@@ -1,31 +1,16 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { LucideIcon } from "lucide-react";
-import { getSession } from "@/lib/auth";
-import { useEffect, useState } from "react";
-import { get } from "http";
+import { useAuth } from "@/hooks/useAuthGuard"; // fixed import
 
 interface RoleButtonProps {
   role: string;
-  Icon?: LucideIcon;
+  Icon?: React.ComponentType<{ className?: string }>; // compatible with Lucide icons
 }
 
 export default function RoleButton({ role, Icon }: RoleButtonProps) {
-  const router = useRouter();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userRole, setUserRole] = useState<string | null>(null);
-
-  useEffect(() => {
-    async function checkSession() {
-      const session = await getSession();
-      if (session) {
-        setIsLoggedIn(true);
-        setUserRole(session.role);
-      }
-    }
-    checkSession();
-  }, []);
+  const router = useRouter(); // ⚠️ router was missing
+  const { userRole, isLoggedIn } = useAuth();
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -48,6 +33,7 @@ export default function RoleButton({ role, Icon }: RoleButtonProps) {
       onClick={handleClick}
       aria-label={`Register as ${role}`}
       className={buttonClasses}
+      disabled={!isLoggedIn && userRole === null} // optional: prevent click while loading
     >
       {Icon && <Icon className="w-5 h-5" />}
       <span>{role}</span>

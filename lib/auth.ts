@@ -8,7 +8,7 @@ export interface UserSession {
 
 let mockUser: UserSession | null = {
   email: "student@example.com",
-  role: "professor",
+  role: "student",
 };
 
 // mock login
@@ -24,3 +24,5 @@ export function logout() {
 export function getSession(): UserSession | null {
   return mockUser;
 }
+
+//I wish there was a girl I like but there ins't one
