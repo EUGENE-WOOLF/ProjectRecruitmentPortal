@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import RoleButton from "@/components/shared/Button";
 import { GraduationCap, Users, FlaskConical } from "lucide-react";
 
 const VIDEOS: string[] = ["/background/bg0.mp4", "/background/bg1.mp4"];
@@ -12,12 +13,8 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen overflow-hidden font-sans text-white">
-      {/* Page shell - header will sit inside the hero so it appears over the video */}
-
       <main className="relative z-10">
-        {/* Hero: video confined to top 100vh (full-bleed) */}
         <section className="relative h-screen w-full">
-          {/* Background video (clearer via CSS filters) - plays only in hero */}
           <video
             key={VIDEOS[index]}
             className="absolute inset-0 w-full h-full object-cover filter brightness-105 contrast-105 saturate-115"
@@ -69,39 +66,10 @@ export default function Home() {
                 like a creative board.
               </p>
 
-              <div className="flex flex-wrap gap-4 mt-8 items-center ">
-                {/* Student */}
-                <Link href="/auth/register?role=student" legacyBehavior>
-                  <a
-                    aria-label="Register as Student"
-                    className="inline-flex items-center gap-3 px-6 py-3 rounded-full font-semibold text-white bg-gradient-to-br from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-300"
-                  >
-                    <GraduationCap className="w-5 h-5" />
-                    <span>Student</span>
-                  </a>
-                </Link>
-
-                {/* Mentor */}
-                <Link href="/auth/register?role=mentor" legacyBehavior>
-                  <a
-                    aria-label="Register as Mentor"
-                    className="inline-flex items-center gap-3 px-6 py-3 rounded-full font-semibold text-white bg-gradient-to-br from-emerald-500 to-emerald-700 hover:from-emerald-600 hover:to-emerald-800 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-300"
-                  >
-                    <Users className="w-5 h-5" />
-                    <span>Mentor</span>
-                  </a>
-                </Link>
-
-                {/* Professor */}
-                <Link href="/auth/register?role=professor" legacyBehavior>
-                  <a
-                    aria-label="Register as Professor"
-                    className="inline-flex items-center gap-3 px-6 py-3 rounded-full font-semibold text-white bg-gradient-to-br from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-rose-300"
-                  >
-                    <FlaskConical className="w-5 h-5" />
-                    <span>Professor</span>
-                  </a>
-                </Link>
+              <div className="flex flex-wrap gap-4 mt-8">
+                <RoleButton role="Student" Icon={GraduationCap} />
+                <RoleButton role="Mentor" Icon={Users} />
+                <RoleButton role="Professor" Icon={FlaskConical} />
               </div>
             </div>
           </div>

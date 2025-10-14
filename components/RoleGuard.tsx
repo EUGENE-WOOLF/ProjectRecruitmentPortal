@@ -1,5 +1,5 @@
 // src/components/RoleGuard.tsx
-
+"use client";
 import { ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import { getSession } from "@/lib/auth";
@@ -20,13 +20,11 @@ export default function RoleGuard({ allowedRoles, children }: RoleGuardProps) {
     redirect("/auth/login");
   }
 
-  // Logged in but role not allowed → redirect to default dashboard
   if (!allowedRoles.includes(session.role)) {
     const defaultPath = rolePermissions[session.role] || "/";
     redirect(defaultPath);
   }
 
-  // Optional: additional check using canAccess
   if (!canAccess(session.role, pathname)) {
     const defaultPath = rolePermissions[session.role] || "/";
     redirect(defaultPath);

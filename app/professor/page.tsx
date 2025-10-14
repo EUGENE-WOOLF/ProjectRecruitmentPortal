@@ -1,3 +1,3 @@
 export default function ProfessorIndex() {
-  return null;
+  return <>this is the prof</>;
 }
