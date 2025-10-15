@@ -21,7 +21,7 @@ interface MenuItem {
 }
 
 export const mentorNavItemsMain: MenuItem[] = [
-  { title: "Dashboard", url: "/mentor/dashboard", icon: Home },
+  { title: "Dashboard", url: "/mentor/", icon: Home },
   {
     title: "Projects",
     url: "/mentor/projects",

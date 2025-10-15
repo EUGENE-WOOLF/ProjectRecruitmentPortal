@@ -21,7 +21,7 @@ interface MenuItem {
 }
 
 export const studnetNavItemsMain: MenuItem[] = [
-  { title: "Dashboard", url: "/student/dashboard", icon: Home },
+  { title: "Dashboard", url: "/student/", icon: Home },
   { title: "Projects", url: "/student/projects", icon: BookOpen },
   {
     title: "Requests",

@@ -8,7 +8,7 @@ export interface UserSession {
 
 let mockUser: UserSession | null = {
   email: "student@example.com",
-  role: "professor",
+  role: "student",
 };
 
 // mock login

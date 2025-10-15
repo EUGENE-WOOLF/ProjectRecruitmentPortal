@@ -21,7 +21,7 @@ interface MenuItem {
 }
 
 export const profNavItemsMain: MenuItem[] = [
-  { title: "Dashboard", url: "/professor/dashboard", icon: Home },
+  { title: "Dashboard", url: "/professor/", icon: Home },
   {
     title: "Projects",
     url: "/professor/projects",

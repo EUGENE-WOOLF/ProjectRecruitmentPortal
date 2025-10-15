@@ -1,0 +1,46 @@
+import { User } from "@/types/user";
+
+export const mockUsers: User[] = [
+  {
+    id: "u1",
+    name: "John Doe",
+    email: "john.doe@iitk.ac.in",
+    role: "student",
+    department: "Computer Science",
+    year: 3,
+    skills: ["Python", "Machine Learning", "Web Development"],
+    bio: "Passionate about AI and web technologies",
+    profileImage: "/avatars/student1.jpg",
+  },
+  {
+    id: "u2",
+    name: "Dr. Jane Smith",
+    email: "jane.smith@iitk.ac.in",
+    role: "professor",
+    department: "Computer Science",
+    researchAreas: ["Artificial Intelligence", "Computer Vision"],
+    bio: "Leading research in AI and computer vision",
+    profileImage: "/avatars/prof1.jpg",
+  },
+  {
+    id: "u3",
+    name: "Mike Johnson",
+    email: "mike.j@techcorp.com",
+    role: "mentor",
+    company: "TechCorp",
+    expertise: ["Cloud Computing", "System Design"],
+    bio: "Industry expert in cloud architecture",
+    profileImage: "/avatars/mentor1.jpg",
+  },
+  {
+    id: "u4",
+    name: "Sarah Chen",
+    email: "sarah.c@iitk.ac.in",
+    role: "student",
+    department: "Electrical Engineering",
+    year: 4,
+    skills: ["Embedded Systems", "IoT", "C++"],
+    bio: "Interested in IoT and embedded systems",
+    profileImage: "/avatars/student2.jpg",
+  },
+];
