@@ -26,7 +26,6 @@ export const profNavItemsMain: MenuItem[] = [
     title: "Projects",
     url: "/professor/projects",
     icon: BookOpen,
-    variant: "highlight",
   },
   {
     title: "Research Interests",
@@ -38,7 +37,6 @@ export const profNavItemsMain: MenuItem[] = [
 ];
 
 export const profNavItemsOther: MenuItem[] = [
-  { title: "Notifications", url: "/professor/notifications", icon: Bell },
   { title: "Messages", url: "/professor/messages", icon: Inbox },
   { title: "Resources", url: "/professor/resources", icon: FileText },
   { title: "Help Center", url: "/professor/help", icon: HelpCircle },

@@ -26,7 +26,6 @@ export const mentorNavItemsMain: MenuItem[] = [
     title: "Projects",
     url: "/mentor/projects",
     icon: BookOpen,
-    variant: "highlight",
   },
   {
     title: "Applications",

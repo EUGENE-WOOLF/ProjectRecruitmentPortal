@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 
 import {
   Sidebar,
@@ -14,14 +15,45 @@ import {
 } from "@/components/ui/sidebar";
 
 import { cn } from "@/lib/utils";
-import { studnetNavItemsMain as mainMenuItems } from "@/constants/studentNavItems";
-import { studentNavItemsOther as otherMenuItems } from "@/constants/studentNavItems";
+import {
+  studnetNavItemsMain,
+  studentNavItemsOther,
+} from "@/constants/studentNavItems";
+import { profNavItemsMain, profNavItemsOther } from "@/constants/profNavItems";
+import {
+  mentorNavItemsMain,
+  mentorNavItemsOther,
+} from "@/constants/mentorNavItems";
 
-const AppSidebar = () => {
+interface AppSidebarProps {
+  currentPath?: string;
+  role?: "student" | "professor" | "mentor";
+}
+
+const getRoleNavItems = (role: string) => {
+  switch (role) {
+    case "professor":
+      return { main: profNavItemsMain, other: profNavItemsOther };
+    case "mentor":
+      return { main: mentorNavItemsMain, other: mentorNavItemsOther };
+    default:
+      return { main: studnetNavItemsMain, other: studentNavItemsOther };
+  }
+};
+
+const AppSidebar = ({
+  currentPath = "",
+  role = "student",
+}: AppSidebarProps) => {
+  const { main: mainMenuItems, other: otherMenuItems } = getRoleNavItems(role);
+  const getRoleTitle = (role: string) => {
+    return role.charAt(0).toUpperCase() + role.slice(1) + " Portal";
+  };
+
   return (
     <SidebarProvider defaultOpen>
-      <Sidebar className="border-r border-white/10 bg-[#0A0F1E] text-white h-screen shadow-xl shadow-black/20">
-        <SidebarContent className="p-6 flex flex-col h-full bg-gradient-to-b from-[#0A0F1E] via-[#111827] to-[#0A0F1E]">
+      <Sidebar className="border-r border-white/10 bg-[#0A0F1E] text-white h-screen shadow-xl shadow-black/20 fixed top-0 left-0 w-64">
+        <SidebarContent className="p-6 flex flex-col h-full bg-gradient-to-b from-[#0A0F1E] via-[#111827] to-[#0A0F1E] overflow-y-auto">
           {/* Logo and Search */}
           <div className="space-y-6">
             <div className="flex items-center gap-3 px-2">
@@ -29,7 +61,7 @@ const AppSidebar = () => {
                 <span className="text-xl font-bold">P</span>
               </div>
               <span className="text-lg font-semibold text-white">
-                Student Portal
+                {getRoleTitle(role)}
               </span>
             </div>
           </div>
@@ -39,15 +71,16 @@ const AppSidebar = () => {
             <SidebarMenu className="space-y-1">
               {mainMenuItems.map((item) => {
                 const Icon = item.icon;
+                const isActive = currentPath === item.url;
                 return (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild>
-                      <a
+                      <Link
                         href={item.url}
                         className={cn(
                           "flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200",
                           "hover:bg-[#1C2333]",
-                          item.variant === "highlight"
+                          isActive || item.variant === "highlight"
                             ? "bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-blue-500/20"
                             : "hover:translate-x-1"
                         )}
@@ -56,7 +89,7 @@ const AppSidebar = () => {
                         <span className="text-sm font-medium">
                           {item.title}
                         </span>
-                      </a>
+                      </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 );
@@ -72,18 +105,24 @@ const AppSidebar = () => {
             <SidebarMenu className="space-y-1">
               {otherMenuItems.map((item) => {
                 const Icon = item.icon;
+                const isActive = currentPath === item.url;
                 return (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild>
-                      <a
+                      <Link
                         href={item.url}
-                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-[#1C2333] hover:translate-x-1 transition-all duration-200"
+                        className={cn(
+                          "flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200",
+                          isActive
+                            ? "text-white bg-[#1C2333]"
+                            : "text-gray-400 hover:text-white hover:bg-[#1C2333] hover:translate-x-1"
+                        )}
                       >
                         <Icon className="w-5 h-5" />
                         <span className="text-sm font-medium">
                           {item.title}
                         </span>
-                      </a>
+                      </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 );

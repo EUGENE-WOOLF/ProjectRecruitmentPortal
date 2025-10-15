@@ -27,7 +27,6 @@ export const studnetNavItemsMain: MenuItem[] = [
     title: "Requests",
     url: "/student/requests",
     icon: CheckSquare,
-    variant: "highlight",
   },
   {
     title: "Submissions",
