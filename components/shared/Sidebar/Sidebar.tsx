@@ -1,18 +1,5 @@
 "use client";
-
 import React from "react";
-import {
-  Home,
-  Bell,
-  CheckSquare,
-  Settings,
-  FileText,
-  UserPlus,
-  Inbox,
-  HelpCircle,
-  LucideIcon,
-  Search,
-} from "lucide-react";
 
 import {
   Sidebar,
@@ -27,36 +14,10 @@ import {
 } from "@/components/ui/sidebar";
 
 import { cn } from "@/lib/utils";
-import { useAuthStore } from "@/app/stores/auth/authStore";
-
-// Define menu item type
-interface MenuItem {
-  title: string;
-  url: string;
-  icon: LucideIcon;
-  variant?: "default" | "highlight";
-}
-
-const mainMenuItems: MenuItem[] = [
-  { title: "Home", url: "/", icon: Home },
-  { title: "Projects", url: "/projects", icon: Bell },
-  {
-    title: "Requests",
-    url: "/requests",
-    icon: CheckSquare,
-    variant: "highlight",
-  },
-  { title: "Porfile", url: "/settings", icon: Settings },
-];
-
-const otherMenuItems: MenuItem[] = [
-  { title: "Documents", url: "/docs", icon: FileText },
-  { title: "Inbox", url: "/inbox", icon: Inbox },
-  { title: "Support", url: "/support", icon: HelpCircle },
-];
+import { studnetNavItemsMain as mainMenuItems } from "@/constants/studentNavItems";
+import { studentNavItemsOther as otherMenuItems } from "@/constants/studentNavItems";
 
 const AppSidebar = () => {
-  const user = useAuthStore((state) => state.user);
   return (
     <SidebarProvider defaultOpen>
       <Sidebar className="border-r border-white/10 bg-[#0A0F1E] text-white h-screen shadow-xl shadow-black/20">
@@ -141,11 +102,10 @@ const AppSidebar = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <div className="text-sm font-medium truncate">
-                  {" "}
-                  {user ? user.name : "User Name"}
+                  User Name(to be dynamic )
                 </div>
                 <div className="text-xs text-gray-400 truncate">
-                  {user ? user.email : "user@example.com"}
+                  user Email (to be dynamic )
                 </div>
               </div>
             </div>
